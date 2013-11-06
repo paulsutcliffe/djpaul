@@ -24,6 +24,9 @@
 }
 @import 'bootstrap';
 @import 'compass';
+@import 'compass/css3';
+@import 'compass/utilities/sprites';
+@import 'compass/typography';
 
 @import 'mixins.css.scss';
 @import 'variables.css.scss';
@@ -31,3 +34,5 @@
 @import 'layout.css.scss';
 @import 'styles.css.scss';
 @import 'media_queries.css.scss';
+
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);

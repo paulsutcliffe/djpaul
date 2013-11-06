@@ -1,0 +1,16 @@
+header {
+  @include inline-block; margin: 0 2px;
+}
+
+.content {
+  background: #fff;
+  border-radius: none;
+  box-shadow: none;
+  margin: 40px 0 40px 0;
+}
+
+footer {
+  position: absolute;
+  float: bottom;
+  bottom: 20px;
+}
