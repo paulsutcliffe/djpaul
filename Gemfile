@@ -37,7 +37,6 @@ gem "capistrano"
 # To use debugger
 # gem 'debugger'
 
-gem 'unicorn-worker-killer'
 gem "bootstrap-sass", "~> 3.0.0.0"
 gem "sass-rails", ">= 3.2"
 gem "compass-rails", :group => :assets
