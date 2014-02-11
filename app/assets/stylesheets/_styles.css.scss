@@ -1,16 +1,63 @@
-header {
-  @include inline-block; margin: 0 2px;
+.header {
+  h3 { color: #BBBBBB;
+    font-size: 24px;
+  }
+  border-bottom: 1px solid #ddd;
 }
 
-.content {
-  background: #fff;
-  border-radius: none;
-  box-shadow: none;
-  margin: 40px 0 40px 0;
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
 }
 
-footer {
-  position: absolute;
-  float: bottom;
-  bottom: 20px;
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  background: url("/assets/cover-verano-700.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border-bottom: 0 none;
+  min-height: 700px;
+  position: relative;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
 }
