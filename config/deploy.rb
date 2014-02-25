@@ -17,6 +17,8 @@ set :scm, "git"
 set :repository, "git@github.com:paulsutcliffe/#{application}.git"
 set :branch, "master"
 
+set :keep_releases, 1
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
