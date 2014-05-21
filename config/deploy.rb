@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'djpaul'
-set :repo_url, 'djpaul@github.com:paulsutcliffe/djpaul.git'
+set :repo_url, 'git@github.com:paulsutcliffe/djpaul.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call

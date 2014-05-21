@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{paul@kosmyka.com}
-role :web, %w{paul@kosmyka.com}
-role :db,  %w{paul@kosmyka.com}
+#role :app, %w{paul@kosmyka.com}
+#role :web, %w{paul@kosmyka.com}
+#role :db,  %w{paul@kosmyka.com}
 
 
 # Extended Server Syntax
@@ -14,8 +14,9 @@ role :db,  %w{paul@kosmyka.com}
 # This can be used to drop a more detailed server definition into the
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
-
-server 'kosmyka.com', user: 'paul', roles: %w{web app}, my_property: :my_value
+set :password, ask('Server password', nil)
+server 'kosmyka.com', user: 'paul', port: 22, password: fetch(:password), roles: %w{web app db}
+# server 'kosmyka.com', user: 'paul', roles: %w{web app}, my_property: :my_value
 
 
 # Custom SSH Options
@@ -25,11 +26,11 @@ server 'kosmyka.com', user: 'paul', roles: %w{web app}, my_property: :my_value
 #
 # Global options
 # --------------
-set :ssh_options, {
-  keys: %w(/home/paulsutcliffe/.ssh/id_rsa),
-  forward_agent: false,
-  auth_methods: %w(password)
-}
+# set :ssh_options, {
+#   keys: %w(/home/paulsutcliffe/.ssh/id_rsa),
+#   forward_agent: false,
+#   auth_methods: %w(password)
+# }
 #
 # And/or per server (overrides global)
 # ------------------------------------
