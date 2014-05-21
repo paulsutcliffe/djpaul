@@ -1,78 +1,59 @@
-#coding: utf-8
-require "bundler/capistrano"
-require "rvm/capistrano"
+# config valid only for Capistrano 3.1
+lock '3.2.1'
 
-set :rvm_ruby_string, '2.1.0'
-set :rvm_type, :user  # Don't use system-wide RVM
+set :application, 'djpaul'
+set :repo_url, 'git@github.com:paulsutcliffe/djpaul.git'
 
-server "www.djpaul.pe", :web, :app, :db, primary: true
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-set :application, "djpaul"
-set :user, "paul"
-set :deploy_to, "/var/www/#{application}"
-set :deploy_via, :remote_cache
-set :use_sudo, false
+# Default deploy_to directory is /var/www/my_app
+set :deploy_to, '/var/www/djpaul'
 
-set :scm, "git"
-set :repository, "git@github.com:paulsutcliffe/#{application}.git"
-set :branch, "master"
+# Default value for :scm is :git
+# set :scm, :git
 
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+# Default value for :format is :pretty
+# set :format, :pretty
 
-namespace :bundler do
-  desc "|DarkRecipes| Installs bundler gem to your server"
-  task :setup, :roles => :app do
-    run "if ! gem list | grep --silent -e 'bundler'; then #{try_sudo} gem uninstall bundler; #{try_sudo} gem install --no-rdoc --no-ri bundler; fi"
-  end
+# Default value for :log_level is :debug
+# set :log_level, :debug
 
-  desc "|DarkRecipes| Runs bundle install on the app server (internal task)"
-  task :install, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && bundle install --deployment --without=development test"
-    if File.exist? "/#{current_path}/bin/unicorn"
-      run "cd #{current_path} && bundle install -—binstubs"
-    end
-  end
-end
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+# set :linked_files, %w{config/database.yml}
+
+# Default value for linked_dirs is []
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
 namespace :deploy do
 
-  desc "creates database & database user"
-
-  task :create_database do
-    set :root_password, Capistrano::CLI.password_prompt("MySQL root password: ")
-    set :db_user, Capistrano::CLI.ui.ask("Application database user: ")
-    set :db_pass, Capistrano::CLI.password_prompt("Password: ")
-    set :db_name, Capistrano::CLI.ui.ask("Database name: ")
-
-    run "mysql --user=root --password=#{root_password} -e \"CREATE DATABASE IF NOT EXISTS #{db_name}\""
-    run "mysql --user=root --password=#{root_password} -e \"GRANT ALL PRIVILEGES ON #{db_name}.* TO '#{db_user}'@'localhost' IDENTIFIED BY '#{db_pass}' WITH GRANT OPTION\""
-  end
-
-  task :setup_config, roles: :app do
-    if File.exist? "/etc/nginx/sites-enabled/default"
-      sudo "rm /etc/nginx/sites-enabled/default"
-    end
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
-    run "cd /var/www/#{application}/current/"
-    run "bundle install --binstubs"
-  end
-  before "deploy:cold", "deploy:create_database"
-  after "deploy:cold", "deploy:setup_config"
-
-  desc "Make sure local git is in sync with remote."
-  task :check_revision, roles: :web do
-    unless `git rev-parse HEAD` == `git rev-parse origin/master`
-      puts "WARNING: HEAD is not the same as origin/master"
-      puts "Run `git push` to sync changes."
-      exit
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+      invoke 'unicorn:reload'
     end
   end
-  before "deploy", "deploy:check_revision"
-  after "deploy", "deploy:restart_unicorn"
 
-  task :restart_unicorn, roles: :app do
-    sudo "service unicorn_#{application} restart"
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
   end
+
 end

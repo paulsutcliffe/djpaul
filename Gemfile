@@ -39,8 +39,13 @@ end
 gem "unicorn"
 
 # Use Capistrano for deployment
-gem "capistrano", group: :development
-
+gem 'capistrano', '~> 3.2.0', require: false, group: :development
+group :development do
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rvm',   '~> 0.1', require: false
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -49,7 +54,6 @@ gem 'font-awesome-sass'
 gem "bootstrap-sass", "~> 3.0.3.0"
 gem "compass-rails", group: :assets
 gem "rails_layout", group: :development
-gem "rvm-capistrano"
 gem "haml"
 gem "scaffold-bootstrap3"
 gem "inherited_resources"
