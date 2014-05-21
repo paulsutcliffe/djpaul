@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+
+.cbp-vimenu {
+	position: fixed;
+	left:0;
+	top:0;
+	z-index:100;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background: #000;
+	height:100%;
+
+}
+
+.socials .social-media-icons {
+	display:none;
+}
+
+.socials:hover .social-media-icons {
+	display: inline;
+}
+
+.cbp-qtrotator .cbp-qtcontent {
+	position: fixed;
+	border-top: none;
+	padding: 0 0 0 0;
+	float:left;
+}
+
+.view h3 {
+	display:none;
+}
+
+.view:hover h3 {
+	display:block;
+}
+
+.og-close  {
+	background: url(/assets/close.png) no-repeat center center;
+}

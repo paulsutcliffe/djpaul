@@ -1,0 +1,18 @@
+- page_title!('Editando category')
+
+#region-categories.container
+
+  .region
+    .region-title
+      %h1
+        Editando
+        %b
+          category
+
+  .region
+    = render 'form'
+
+  .region
+    .admin-controls
+      = link_to 'Ver', @category, class: 'btn btn-info'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

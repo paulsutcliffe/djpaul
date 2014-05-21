@@ -1,0 +1,14 @@
+%div{:class => [post.category.name.downcase, 'col-md-3', 'col-sm-6']}
+  .view.view-tenth
+    = image_tag post.image_url(:thumb), class: 'img-responsive'
+    .mask
+      %h3
+        = post.title
+      %p
+        = post.info
+      - if post.video.empty?
+        = link_to post.link, class: 'info', target: '_blank' do
+          %i.icon-headphones
+      - else
+        %a{:href=> post.video, :class => 'info fancybox-media', :title => post.title, :rel => 'media-gallery'}
+          %i.icon-play

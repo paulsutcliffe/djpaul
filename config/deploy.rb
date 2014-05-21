@@ -5,7 +5,7 @@ require "rvm/capistrano"
 set :rvm_ruby_string, '2.1.0'
 set :rvm_type, :user  # Don't use system-wide RVM
 
-server "djpaul.pe", :web, :app, :db, primary: true
+server "www.djpaul.pe", :web, :app, :db, primary: true
 
 set :application, "djpaul"
 set :user, "paul"
@@ -16,8 +16,6 @@ set :use_sudo, false
 set :scm, "git"
 set :repository, "git@github.com:paulsutcliffe/#{application}.git"
 set :branch, "master"
-
-set :keep_releases, 1
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true

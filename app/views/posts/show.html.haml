@@ -1,0 +1,27 @@
+#region-posts.container
+  .region
+    .region-title
+      %h1= page_title!('post')
+
+  .region
+    %p
+      %b Title:
+      = @post.title
+    %p
+      %b Info:
+      = @post.info
+    %p
+      %b Video:
+      = @post.video
+    %p
+      %b Image:
+      = @post.image
+    %p
+      %b Link:
+      = @post.link
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_post_path(@post), class: 'btn btn-success'
+    = link_to 'Regresar', posts_path, class: 'btn btn-warning'
