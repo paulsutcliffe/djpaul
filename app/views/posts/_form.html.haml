@@ -21,10 +21,14 @@
   .form-group
     = f.label :image, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :image, class: 'form-control'
+      = f.file_field :image, class: 'form-control'
   .form-group
     = f.label :link, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :link, class: 'form-control'
+  .form-group
+    = f.label :category, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.collection_select(:category_id, Category.all, :id, :name, class: 'form-control')
   .actions
     = f.submit 'Guardar', class: 'btn btn-default'

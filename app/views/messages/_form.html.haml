@@ -1,0 +1,10 @@
+= form_for @message do |f|
+  .element
+    = f.text_field :name, name: 'name', class: 'text', placeholder: 'Nombre'
+  .element
+    = f.text_field :email, name: 'email', class: 'text', placeholder: 'E-mail'
+  .element
+    = f.text_area :message, name: 'comment', class: 'text', placeholder: 'Mensaje'
+  .element
+    = f.submit 'Enviar', id: 'submit'
+  .loading

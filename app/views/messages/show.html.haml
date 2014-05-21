@@ -1,0 +1,21 @@
+#region-messages.container
+  .region
+    .region-title
+      %h1= page_title!('message')
+
+  .region
+    %p
+      %b Name:
+      = @message.name
+    %p
+      %b Email:
+      = @message.email
+    %p
+      %b Message:
+      = @message.message
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_message_path(@message), class: 'btn btn-success'
+    = link_to 'Regresar', messages_path, class: 'btn btn-warning'

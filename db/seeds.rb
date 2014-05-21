@@ -6,7 +6,7 @@ DatabaseCleaner.strategy = :truncation
 
 DatabaseCleaner.clean
 
-#FactoryGirl.create :admin
+FactoryGirl.create :admin
 
 3.times do
   FactoryGirl.create :category

@@ -1,4 +1,7 @@
 Djpaul::Application.routes.draw do
+  devise_for :admins
+  resources :messages
+
   resources :posts
 
   resources :categories

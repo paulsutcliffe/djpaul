@@ -1,0 +1,30 @@
+#region-messages.container
+
+  .region
+    .region-title
+      %h1= page_title!('messages')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Message', new_message_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Name
+            %th Email
+            %th Message
+            %th
+            %th
+            %th
+
+          - @messages.each do |message|
+            %tr
+              %td= message.name
+              %td= message.email
+              %td= message.message
+              %td= link_to 'Ver', message, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_message_path(message), class: 'btn btn-success'
+                %td= link_to 'Eliminar', message, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
