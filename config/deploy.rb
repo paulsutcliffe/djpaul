@@ -1,15 +1,14 @@
 # config valid only for Capistrano 3.1
+lock '3.2.1'
 
 set :application, 'djpaul'
-set :repo_url, 'git@github.com:paulsutcliffe/djpaul.git'
-
-server 'kosmyka.com', user: 'paul', roles: %w{web app}
+set :repo_url, 'djpaul@github.com:paulsutcliffe/djpaul.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/var/www/djpaul'
+# set :deploy_to, '/var/www/my_app'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -42,7 +41,6 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
-      invoke 'unicorn:reload'
     end
   end
 

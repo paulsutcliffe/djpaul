@@ -1,5 +1,3 @@
-require 'capistrano3/unicorn'
-
 # Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
