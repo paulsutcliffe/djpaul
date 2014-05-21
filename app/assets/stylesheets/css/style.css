@@ -1505,7 +1505,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 	font-weight:300;
 }
 
-.portfolioFilter ul li.active>a,..portfolioFilter ul li.active>a:hover,.portfolioFilter ul li.active>a:focus{
+.portfolioFilter ul li.active>a,.portfolioFilter ul li.active>a:hover,.portfolioFilter ul li.active>a:focus{
 	color:#fff;
 	border:none;
 
