@@ -1,7 +1,6 @@
-@charset "utf-8";
 @media only screen and (min-width: 768px) and (max-width: 960px)
 {
- 
+
 
   .mrg-mob
   {
@@ -11,7 +10,7 @@
 
 @media only screen and (min-width:480px) and (max-width:767px)
 {
- 
+
 
   .pattern
   {
@@ -57,7 +56,7 @@
   {
     width: 70%;
   }
-  
+
   .align-center {
 	  text-align:center;
   }
@@ -69,7 +68,7 @@
 
 @media only screen and (min-width: 249px) and (max-width: 479px)
 {
- 
+
 
   .pattern
   {
@@ -243,7 +242,7 @@
   {
     width: 80%;
   }
-  
+
   .align-center {
 	  text-align:center;
   }
