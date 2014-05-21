@@ -39,7 +39,7 @@ end
 gem "unicorn"
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.2.0', require: false, group: :development
+gem 'capistrano', '~> 3.1.0', require: false, group: :development
 group :development do
   gem 'capistrano3-unicorn'
   gem 'capistrano-rvm',   '~> 0.1', require: false
