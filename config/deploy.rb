@@ -3,6 +3,8 @@
 set :application, 'djpaul'
 set :repo_url, 'git@github.com:paulsutcliffe/djpaul.git'
 
+server 'kosmyka.com', user: 'paul', roles: %w{web app}
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
