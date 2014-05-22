@@ -59,7 +59,7 @@ Djpaul::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += ['bootstrap.min.js', 'cbpBGSlideshow.min.js', 'config.js', 'grid.js', 'jquery-1.10.2.min.js', 'jquery.cbpQTRotator.min.js', 'jquery.cookie.js', 'jquery.easing.1.3.js', 'jquery.imagesloaded.min.js', 'jquery.isotope.js', 'modernizr.js', 'respond.min.js', 'retina.js', 'ticker.js', 'vidscale.js']
+  config.assets.precompile += ['bootstrap.min.js', 'cbpBGSlideshow.min.js', 'config.js', 'grid.js', 'jquery-1.10.2.min.js', 'jquery.cbpQTRotator.min.js', 'jquery.cookie.js', 'jquery.easing.1.3.js', 'jquery.imagesloaded.min.js', 'jquery.isotope.js', 'modernizr.js', 'respond.min.js', 'retina.js', 'ticker.js', 'vidscale.js', 'jquery.fancybox-media.js', 'jquery.fancybox-thumbs.js', 'jquery.fancybox.js']
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

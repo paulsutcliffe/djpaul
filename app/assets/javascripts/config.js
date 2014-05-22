@@ -189,10 +189,10 @@ $(function() {
 });
 
 
-// Gird
+// Grid
 $(function() {
 		"use strict";
-		Grid.init();
+		//Grid.init();
 });
 
 // Testimonials
