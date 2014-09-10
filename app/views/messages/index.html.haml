@@ -14,7 +14,7 @@
           %tr
             %th Name
             %th Email
-            %th Message
+            %th Comment
             %th
             %th
             %th
@@ -22,8 +22,8 @@
           - @messages.each do |message|
             %tr
               %td= message.name
-              %td= message.email
-              %td= message.message
+            %td= message.email
+            %td= message.comment
               %td= link_to 'Ver', message, class: 'btn btn-info'
               - if current_admin
                 %td= link_to 'Editar', edit_message_path(message), class: 'btn btn-success'

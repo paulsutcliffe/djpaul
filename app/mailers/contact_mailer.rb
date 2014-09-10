@@ -3,6 +3,7 @@ class ContactMailer < ActionMailer::Base
 
   def new_message(message)
     @message = message
-    mail(:to => "hola@djpaul.pe", :subject => "Mensajes desde la web", :replay_to => message.email, :from => "web@djpaul.pe")
+    @greeting = "Mensaje desde la web"
+    mail(:to => "hola@djpaul.pe", :subject => @greeting, :replay_to => message.email, :from => "web@djpaul.pe")
   end
 end

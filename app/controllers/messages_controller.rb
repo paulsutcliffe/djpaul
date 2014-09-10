@@ -2,7 +2,7 @@ class MessagesController < InheritedResources::Base
   before_filter :authenticate_admin!, except: [:create]
 
   def permitted_params
-    params.permit(:message => [:name, :email, :message])
+    params.permit(:message => [:name, :email, :comment])
   end
 
   def create
